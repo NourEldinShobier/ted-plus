@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
-import '../core/core.module.dart';
 
-part 'ripple-layout.widget.g.dart';
+class RippleLayout extends StatelessWidget {
+  final Icon child;
+  final GestureTapCallback onPress;
+  final BorderRadius borderRadius;
 
-@widget
-Widget rippleLayout({
-  @required Icon child,
-  @required GestureTapCallback onPress,
-  @required BorderRadius borderRadius,
-}) {
-  return Material(
-    clipBehavior: Clip.antiAlias,
-    type: MaterialType.transparency,
-    borderRadius: borderRadius,
-    child: IconButton(
-      onPressed: onPress,
-      icon: child,
-    ),
-  );
+  RippleLayout({
+    Key key,
+    @required this.child,
+    @required this.onPress,
+    @required this.borderRadius,
+  }) : super(key: key);
+
+  Widget build(BuildContext context) {
+    return Material(
+      clipBehavior: Clip.antiAlias,
+      type: MaterialType.transparency,
+      borderRadius: borderRadius,
+      child: IconButton(
+        onPressed: onPress,
+        icon: child,
+      ),
+    );
+  }
 }

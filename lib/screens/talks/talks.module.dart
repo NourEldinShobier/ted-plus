@@ -16,12 +16,9 @@ class TalksScreen extends StatefulWidget {
 class _TalksScreenState extends State<TalksScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(64),
-        child: TAppBar(
-          key: ValueKey('talks.app-bar'),
-          title: widget.title,
-        ),
+      appBar: TAppBar(
+        key: ValueKey('talks.app-bar'),
+        title: widget.title,
       ),
       body: Container(
         color: Colors.white,
@@ -33,11 +30,6 @@ class _TalksScreenState extends State<TalksScreen> {
               return LargePost(
                 key: ValueKey('talks $index'),
                 talk: FakeData.talks[index],
-                onMenuTap: () {
-                  setState(() {
-                    print("object");
-                  });
-                },
               );
             },
             separatorBuilder: (_, __) {
