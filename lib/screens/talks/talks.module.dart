@@ -4,21 +4,21 @@ import 'widgets/widgets.module.dart';
 
 import 'package:ted_plus/widgets/widgets.module.dart';
 
-class TalksScreen extends StatefulWidget {
+class TalksScreen extends StatelessWidget {
   final String title;
 
   TalksScreen({@required this.title});
 
-  @override
-  _TalksScreenState createState() => _TalksScreenState();
-}
-
-class _TalksScreenState extends State<TalksScreen> {
   Widget build(BuildContext context) {
+    Widget divider = Padding(
+      padding: EdgeInsets.only(bottom: 23, right: 20),
+      child: Container(color: Color(0xFFF1F3F4), height: 1),
+    );
+
     return Scaffold(
       appBar: TAppBar(
         key: ValueKey('talks.app-bar'),
-        title: widget.title,
+        title: title,
       ),
       body: Container(
         color: Colors.white,
@@ -32,15 +32,11 @@ class _TalksScreenState extends State<TalksScreen> {
                 talk: FakeData.talks[index],
               );
             },
-            separatorBuilder: (_, __) {
-              return Divider(
-                color: Colors.transparent,
-                height: 37,
-              );
-            },
-            padding: EdgeInsets.symmetric(
-              vertical: 20,
-              horizontal: 20,
+            separatorBuilder: (_, __) => divider,
+            padding: EdgeInsets.only(
+              top: 23,
+              bottom: 8,
+              left: 20,
             ),
             physics: AlwaysScrollableScrollPhysics(),
             itemCount: FakeData.talks.length,

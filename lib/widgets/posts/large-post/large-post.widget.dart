@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../styles/styles.module.dart' as Styles;
+import '../../../widgets/widgets.module.dart';
 import '../../../utils/talk.util.dart';
 
 class LargePost extends StatelessWidget {
@@ -19,7 +20,7 @@ class LargePost extends StatelessWidget {
           image: talk.image,
           duration: talk.duration,
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 12),
         _TalkTitle(title: talk.title),
         SizedBox(height: 16),
         Row(
@@ -91,16 +92,19 @@ class _TalkThumbnail extends StatelessWidget {
   });
 
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        _TalkImage(image: image),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.bottomRight,
-            child: _TalkDuration(duration: duration),
+    return Padding(
+      padding: EdgeInsets.only(right: 20),
+      child: Stack(
+        children: <Widget>[
+          _TalkImage(image: image),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: _TalkDuration(duration: duration),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -111,12 +115,15 @@ class _TalkTitle extends StatelessWidget {
   _TalkTitle({@required this.title});
 
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(
-        color: Color(0xFF202124),
-        fontFamily: 'GoogleMedium',
-        fontSize: 21.0,
+    return Padding(
+      padding: EdgeInsets.only(right: 20),
+      child: Text(
+        title,
+        style: TextStyle(
+          color: Color(0xFF202124),
+          fontFamily: 'GoogleMedium',
+          fontSize: 21.0,
+        ),
       ),
     );
   }
@@ -136,7 +143,7 @@ class _TalkSubTitle extends StatelessWidget {
       '$speakerName • $date',
       style: TextStyle(
         color: Styles.Colors.greyDark,
-        fontSize: 13.0,
+        fontSize: 12.0,
       ),
     );
   }
@@ -145,13 +152,15 @@ class _TalkSubTitle extends StatelessWidget {
 class _Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: SizedBox(
-        width: 12,
+    return SizedBox(
+      width: 44,
+      height: 44,
+      child: RippleLayout(
+        onPress: () {},
+        borderRadius: BorderRadius.circular(100),
         child: Icon(
           Icons.more_vert,
-          color: Styles.Colors.greyLight,
+          color: Styles.Colors.grey,
           size: 22,
         ),
       ),

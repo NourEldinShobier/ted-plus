@@ -50,7 +50,7 @@ class _TitleElement extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          color: Styles.Colors.red,
+          color: Color(0xFF202124),
           fontFamily: 'GoogleMedium',
           fontSize: 22.0,
         ),
