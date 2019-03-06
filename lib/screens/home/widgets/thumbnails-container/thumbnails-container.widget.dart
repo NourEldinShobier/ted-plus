@@ -18,17 +18,22 @@ class ThumbnailsContainer extends StatelessWidget {
   final String title;
   final String subTitle;
 
-  onTitleTap() {}
+  onTitleTap(context, title) {
+    Router.navigateToTalks(context, title);
+  }
 
   Widget build(BuildContext context) {
-    Widget titleElement = Padding(
-      padding: EdgeInsets.only(left: 23),
-      child: Text(
-        title,
-        style: TextStyle(
-          color: Color(0xFF202124),
-          fontFamily: 'GoogleMedium',
-          fontSize: 21,
+    Widget titleElement = InkResponse(
+      onTap: () => onTitleTap(context, title),
+      child: Padding(
+        padding: EdgeInsets.only(left: 23),
+        child: Text(
+          title,
+          style: TextStyle(
+            color: Color(0xFF202124),
+            fontFamily: 'GoogleMedium',
+            fontSize: 21,
+          ),
         ),
       ),
     );

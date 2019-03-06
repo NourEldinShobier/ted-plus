@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../styles/styles.module.dart' as Styles;
-import '../../../utils/talk.util.dart';
+import '../../styles/styles.module.dart' as Styles;
+import '../../utils/talk.util.dart';
 
 class MidPost extends StatelessWidget {
   final Talk talk;
@@ -11,9 +11,7 @@ class MidPost extends StatelessWidget {
     @required this.talk,
   }) : super(key: key);
 
-  onMenuTap() {
-    print("object");
-  }
+  onMenuTap() {}
 
   Widget build(BuildContext context) {
     Widget imageElement = ClipRRect(

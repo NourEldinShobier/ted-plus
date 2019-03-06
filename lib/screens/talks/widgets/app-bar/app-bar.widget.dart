@@ -22,7 +22,7 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
         color: Colors.white,
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.12),
+            color: Color.fromRGBO(0, 0, 0, 0.0),
             offset: Offset(0, 0),
             blurRadius: 3,
           ),

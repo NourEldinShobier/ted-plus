@@ -3,8 +3,9 @@ import 'screens/talks/talks.module.dart';
 
 abstract class Router {
   static navigateToTalks(context, title) {
-    /* Navigator.of(context).push(PageRouteBuilder(
-      pageBuilder: (_, __, ___) => TalksScreen(title: title),
-    )); */
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => TalksScreen(title: title)),
+    );
   }
 }

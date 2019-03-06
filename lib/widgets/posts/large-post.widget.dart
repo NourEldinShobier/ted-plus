@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../styles/styles.module.dart' as Styles;
-import '../../../widgets/widgets.module.dart';
-import '../../../utils/talk.util.dart';
+import '../../styles/styles.module.dart' as Styles;
+import '../../widgets/widgets.module.dart';
+import '../../utils/talk.util.dart';
 
 class LargePost extends StatelessWidget {
   final Talk talk;
