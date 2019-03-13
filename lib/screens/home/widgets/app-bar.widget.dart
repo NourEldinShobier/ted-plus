@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import '../../home.module.dart';
+import '../home.module.dart';
 
 import 'package:ted_plus/styles/styles.module.dart' as Styles;
 import 'package:ted_plus/widgets/widgets.module.dart';
@@ -74,7 +74,7 @@ class _Title extends StatelessWidget {
           Text(
             'Talks',
             style: TextStyle(
-              color: Styles.Colors.grey,
+              color: Styles.Colors.greyLight,
               fontFamily: 'GoogleMedium',
               fontSize: 22.0,
             ),
@@ -97,7 +97,7 @@ class _Menu extends StatelessWidget {
           borderRadius: BorderRadius.circular(100),
           child: Icon(
             Icons.menu,
-            color: Styles.Colors.grey,
+            color: Styles.Colors.greyLight,
             size: 24,
           ),
           onPress: onMenuTap,

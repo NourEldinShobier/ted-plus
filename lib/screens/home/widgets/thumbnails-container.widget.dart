@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../styles/styles.module.dart' as Styles;
-import '../../../../widgets/widgets.module.dart';
+import '../../../styles/styles.module.dart' as Styles;
+import '../../../widgets/widgets.module.dart';
 
-import '../../../../utils/talk.util.dart';
-import '../../../../routes.dart';
+import '../../../utils/talk.util.dart';
+import '../../../routes.dart';
 
 class ThumbnailsContainer extends StatelessWidget {
   ThumbnailsContainer({

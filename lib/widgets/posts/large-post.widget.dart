@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../styles/styles.module.dart' as Styles;
 import '../../widgets/widgets.module.dart';
+import '../../styles/styles.module.dart' as Styles;
 import '../../utils/talk.util.dart';
 
 class LargePost extends StatelessWidget {
@@ -13,30 +13,51 @@ class LargePost extends StatelessWidget {
   }) : super(key: key);
 
   Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        _Post(talk: this.talk),
+        Positioned.fill(
+          child: Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: EdgeInsets.only(right: 3, bottom: 3),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[_BookMark(), _More()],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _Post extends StatelessWidget {
+  final Talk talk;
+
+  _Post({
+    Key key,
+    this.talk,
+  }) : super(key: key);
+
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
+        SizedBox(height: 16),
         _TalkThumbnail(
           image: talk.image,
           duration: talk.duration,
         ),
         SizedBox(height: 12),
         _TalkTitle(title: talk.title),
-        SizedBox(height: 16),
-        Row(
-          children: <Widget>[
-            _TalkSubTitle(
-              speakerName: talk.speakerName,
-              date: talk.publishDate,
-            ),
-            Expanded(
-              child: Align(
-                child: _Menu(),
-                alignment: Alignment.centerRight,
-              ),
-            )
-          ],
-        )
+        SizedBox(height: 19),
+        _TalkSubTitle(
+          speakerName: talk.speakerName,
+          date: talk.publishDate,
+        ),
+        SizedBox(height: 16)
       ],
     );
   }
@@ -49,7 +70,8 @@ class _TalkImage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Container(
-      height: 180,
+      height: 176,
+      width: double.infinity,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(11),
         child: image,
@@ -93,7 +115,7 @@ class _TalkThumbnail extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: Stack(
         children: <Widget>[
           _TalkImage(image: image),
@@ -116,13 +138,13 @@ class _TalkTitle extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: Text(
         title,
         style: TextStyle(
           color: Color(0xFF202124),
           fontFamily: 'GoogleMedium',
-          fontSize: 21.0,
+          fontSize: 20,
         ),
       ),
     );
@@ -139,29 +161,49 @@ class _TalkSubTitle extends StatelessWidget {
   });
 
   Widget build(BuildContext context) {
-    return Text(
-      '$speakerName • $date',
-      style: TextStyle(
-        color: Styles.Colors.greyDark,
-        fontSize: 12.0,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 21),
+      child: Text(
+        '$speakerName • $date',
+        style: TextStyle(
+          color: Styles.Colors.greyLight,
+          fontSize: 12.0,
+        ),
       ),
     );
   }
 }
 
-class _Menu extends StatelessWidget {
-  @override
+class _BookMark extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 44,
-      height: 44,
+      width: 40,
+      height: 40,
+      child: RippleLayout(
+        onPress: () {},
+        borderRadius: BorderRadius.circular(100),
+        child: Icon(
+          Icons.bookmark_border,
+          color: Styles.Colors.greyLight,
+          size: 21,
+        ),
+      ),
+    );
+  }
+}
+
+class _More extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 40,
+      height: 40,
       child: RippleLayout(
         onPress: () {},
         borderRadius: BorderRadius.circular(100),
         child: Icon(
           Icons.more_vert,
-          color: Styles.Colors.grey,
-          size: 22,
+          color: Styles.Colors.greyLight,
+          size: 21,
         ),
       ),
     );
