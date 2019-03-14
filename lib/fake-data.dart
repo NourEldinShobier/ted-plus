@@ -12,6 +12,7 @@ class FakeData {
         image: AssetImage('assets/img/PostImg.jpg'),
         fit: BoxFit.cover,
       ),
+      tags: ['Technology', 'Science'],
     ),
     Talk(
       title: 'Can you solve the prisoner hat riddle?',
@@ -22,6 +23,7 @@ class FakeData {
         image: AssetImage('assets/img/PostImg1.jpg'),
         fit: BoxFit.cover,
       ),
+      tags: ['Technology', 'Science'],
     ),
     Talk(
       title: 'What your breath could reveal about your health',
@@ -32,6 +34,16 @@ class FakeData {
         image: AssetImage('assets/img/PostImg2.jpg'),
         fit: BoxFit.cover,
       ),
+      tags: ['Technology', 'Science'],
     )
+  ];
+
+  static List<String> fields = [
+    'All',
+    'Business',
+    'Science',
+    'Art',
+    'Education',
+    'Design',
   ];
 }

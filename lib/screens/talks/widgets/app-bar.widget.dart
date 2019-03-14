@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ted_plus/widgets/widgets.module.dart';
 import 'package:ted_plus/styles/styles.module.dart' as Styles;
+import '../talks.module.dart';
 
-class TAppBar extends StatelessWidget implements PreferredSizeWidget {
+class TAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
 
   TAppBar({
@@ -10,7 +11,25 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
     @required this.title,
   }) : super(key: key);
 
+  @override
+  _TAppBarState createState() => _TAppBarState();
   Size get preferredSize => Size.fromHeight(64);
+}
+
+class _TAppBarState extends State<TAppBar> {
+  TalksScreen talksScreen;
+  bool dropShadow = false;
+
+  initState() {
+    talksScreen = context.ancestorWidgetOfExactType(TalksScreen);
+    talksScreen.scrollController.addListener(() {
+      double offset = talksScreen.scrollController.offset;
+
+      if (offset == 0 && dropShadow) setState(() => dropShadow = false);
+      if (offset > 0 && !dropShadow) setState(() => dropShadow = true);
+    });
+    super.initState();
+  }
 
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
@@ -22,7 +41,7 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
         color: Colors.white,
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.0),
+            color: Color.fromRGBO(0, 0, 0, dropShadow ? 0.12 : 0.0),
             offset: Offset(0, 0),
             blurRadius: 3,
           ),
@@ -31,11 +50,11 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Row(
         children: <Widget>[
           SizedBox(width: 20),
-          Expanded(flex: 2, child: _Title(title: this.title)),
+          Expanded(flex: 2, child: _Title(title: this.widget.title)),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[_Cast(), _More()],
+              children: <Widget>[_Search(), _More()],
             ),
           ),
         ],
@@ -93,7 +112,7 @@ class _More extends StatelessWidget {
   }
 }
 
-class _Cast extends StatelessWidget {
+class _Search extends StatelessWidget {
   Widget build(BuildContext context) {
     return RippleLayout(
       borderRadius: BorderRadius.circular(100),

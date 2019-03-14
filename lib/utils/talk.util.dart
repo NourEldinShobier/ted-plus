@@ -10,11 +10,14 @@ class Talk {
 
   final String duration;
 
+  final List<String> tags;
+
   Talk({
     this.title,
     this.speakerName,
     this.publishDate,
     this.duration,
     this.image,
+    this.tags,
   });
 }

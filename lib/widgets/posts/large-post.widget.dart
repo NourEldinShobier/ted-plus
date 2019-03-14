@@ -45,13 +45,14 @@ class _Post extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(height: 16),
+        SizedBox(height: 12),
         _TalkThumbnail(
           image: talk.image,
           duration: talk.duration,
         ),
         SizedBox(height: 12),
         _TalkTitle(title: talk.title),
+        _Tags(talk: talk),
         SizedBox(height: 19),
         _TalkSubTitle(
           speakerName: talk.speakerName,
@@ -59,6 +60,29 @@ class _Post extends StatelessWidget {
         ),
         SizedBox(height: 16)
       ],
+    );
+  }
+}
+
+class _Tags extends StatelessWidget {
+  _Tags({
+    Key key,
+    @required this.talk,
+  }) : super(key: key);
+
+  final Talk talk;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 20.0, top: 13),
+      child: Row(
+        children: <Widget>[
+          Tag(text: talk.tags[0]),
+          SizedBox(width: 8),
+          Tag(text: talk.tags[1]),
+        ],
+      ),
     );
   }
 }
