@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ted_plus/fake-data.dart';
 
 class FieldsList extends StatefulWidget {
+  FieldsList({Key key}) : super(key: key);
   createState() => _FieldsListState();
 }
 
@@ -47,7 +48,10 @@ class _FieldsListState extends State<FieldsList> {
                   fieldsModels[index].isSelected = true;
                 });
               },
-              child: FieldRadio(model: fieldsModels[index]),
+              child: FieldRadio(
+                key: ValueKey('field.$index'),
+                model: fieldsModels[index],
+              ),
             ),
           );
         },

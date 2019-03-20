@@ -43,7 +43,7 @@ class ThumbnailsContainer extends StatelessWidget {
       child: Text(
         subTitle,
         style: TextStyle(
-          color: Styles.Colors.grey,
+          color: Styles.Colors.greyLight,
           fontSize: 16,
         ),
       ),
@@ -59,7 +59,7 @@ class ThumbnailsContainer extends StatelessWidget {
           titleElement,
           SizedBox(height: 4),
           subTitleElement,
-          SizedBox(height: 27),
+          SizedBox(height: 12),
           Expanded(
             child: _TalksList(this.talks, title),
           )
@@ -78,14 +78,14 @@ class _TalksList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       key: ValueKey('$title-list'),
-      itemCount: talks.length,
+      itemCount: 3,
       itemBuilder: (_, index) {
         return MidPost(
           key: ValueKey('$title.talk $index'),
           talk: talks[index],
         );
       },
-      padding: EdgeInsets.only(left: 11.5, right: 11.5),
+      padding: EdgeInsets.only(left: 11.5, right: 11.5, top: 15),
       physics: AlwaysScrollableScrollPhysics(),
       scrollDirection: Axis.horizontal,
     );

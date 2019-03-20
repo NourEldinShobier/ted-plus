@@ -45,7 +45,7 @@ class _Post extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(height: 12),
+        SizedBox(height: 16),
         _TalkThumbnail(
           image: talk.image,
           duration: talk.duration,

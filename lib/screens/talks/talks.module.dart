@@ -13,7 +13,7 @@ class TalksScreen extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TAppBar(title: this.title),
+      appBar: TAppBar(title: this.title, key: ValueKey('talks.app-bar')),
       body: Container(
         color: Colors.white,
         child: ListView.separated(
@@ -21,9 +21,16 @@ class TalksScreen extends StatelessWidget {
           itemCount: FakeData.talks.length + 2,
           itemBuilder: (_, index) {
             if (index == 0) return SizedBox(height: 16);
-            if (index == 1) return FieldsList();
-            if (index == 2) return LargePost(talk: FakeData.talks[index - 2]);
-            return SmallPost(talk: FakeData.talks[index - 2]);
+            if (index == 1)
+              return FieldsList(key: ValueKey('talks.fields-list'));
+            if (index == 2)
+              return LargePost(
+                key: ValueKey('post.${index - 2}'),
+                talk: FakeData.talks[index - 2],
+              );
+            return SmallPost(
+                key: ValueKey('post.${index - 2}'),
+                talk: FakeData.talks[index - 2]);
           },
           separatorBuilder: (_, index) {
             if (index == 0) return SizedBox(height: 0);

@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
             key: ValueKey('home.categories-List'),
             itemBuilder: (_, index) {
               return ThumbnailsContainer(
-                key: ValueKey('thumnails $index'),
+                key: ValueKey('thumnails.$index'),
                 title: thumbnailsTitles[index],
                 subTitle: thumbnailsSubTitles[index],
                 talks: FakeData.talks,
