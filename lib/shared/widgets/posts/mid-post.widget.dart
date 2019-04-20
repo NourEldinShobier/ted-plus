@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../styles/styles.module.dart' as Styles;
-import '../../utils/talk.util.dart';
+import '../../../utils/talk.util.dart';
 
 class MidPost extends StatelessWidget {
   final Talk talk;

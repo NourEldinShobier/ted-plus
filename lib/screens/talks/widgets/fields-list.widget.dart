@@ -1,4 +1,4 @@
-import 'package:ted_plus/styles/styles.module.dart' as Styles;
+import 'package:ted_plus/shared/styles/styles.module.dart' as Styles;
 import 'package:flutter/material.dart';
 import 'package:ted_plus/fake-data.dart';
 

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class RippleLayout extends StatelessWidget {
   final Icon child;
-  final GestureTapCallback onPress;
+  final VoidCallback onPressed;
   final BorderRadius borderRadius;
 
   RippleLayout({
     Key key,
     @required this.child,
-    @required this.onPress,
+    @required this.onPressed,
     @required this.borderRadius,
   }) : super(key: key);
 
@@ -18,7 +18,7 @@ class RippleLayout extends StatelessWidget {
       type: MaterialType.transparency,
       borderRadius: borderRadius,
       child: IconButton(
-        onPressed: onPress,
+        onPressed: onPressed,
         icon: child,
       ),
     );

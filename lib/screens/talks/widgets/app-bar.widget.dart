@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ted_plus/widgets/widgets.module.dart';
-import 'package:ted_plus/styles/styles.module.dart' as Styles;
+import 'package:ted_plus/shared/widgets/widgets.module.dart';
+import 'package:ted_plus/shared/styles/styles.module.dart' as Styles;
 import '../talks.module.dart';
 
 class TAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -106,7 +106,7 @@ class _More extends StatelessWidget {
           color: Styles.Colors.greyLight,
           size: 24,
         ),
-        onPress: () {},
+        onPressed: () {},
       ),
     );
   }
@@ -121,7 +121,7 @@ class _Search extends StatelessWidget {
         color: Styles.Colors.greyLight,
         size: 24,
       ),
-      onPress: () {},
+      onPressed: () {},
     );
   }
 }

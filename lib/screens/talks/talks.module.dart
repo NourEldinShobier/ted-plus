@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ted_plus/fake-data.dart';
 import 'widgets/widgets.module.dart';
 
-import '../../widgets/widgets.module.dart';
+import '../../shared/widgets/widgets.module.dart';
 
 class TalksScreen extends StatelessWidget {
   final String title;

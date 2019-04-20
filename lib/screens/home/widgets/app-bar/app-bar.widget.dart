@@ -1,33 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import '../home.module.dart';
+import '../../home.module.dart';
 
-import 'package:ted_plus/styles/styles.module.dart' as Styles;
-import 'package:ted_plus/widgets/widgets.module.dart';
+import 'package:ted_plus/shared/styles/styles.module.dart' as Styles;
+import 'package:ted_plus/shared/widgets/widgets.module.dart';
+
+part 'app-bar.vm.dart';
 
 class TAppBar extends StatefulWidget implements PreferredSizeWidget {
   TAppBar({Key key}) : super(key: key);
 
-  TAppBarState createState() => TAppBarState();
-
+  TAppBarView createState() => TAppBarView();
   Size get preferredSize => Size.fromHeight(64);
 }
 
-class TAppBarState extends State<TAppBar> {
-  HomeScreen homeScreen;
-  bool dropShadow = false;
-
-  initState() {
-    homeScreen = context.ancestorWidgetOfExactType(HomeScreen);
-    homeScreen.scrollController.addListener(() {
-      double offset = homeScreen.scrollController.offset;
-
-      if (offset == 0 && dropShadow) setState(() => dropShadow = false);
-      if (offset > 0 && !dropShadow) setState(() => dropShadow = true);
-    });
-    super.initState();
-  }
-
+class TAppBarView extends TAppBarViewModel {
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
 
@@ -45,7 +32,7 @@ class TAppBarState extends State<TAppBar> {
       ),
       child: Row(
         children: <Widget>[
-          Expanded(child: _Menu()),
+          Expanded(child: _Menu(onPressed: onMenuPressed)),
           Expanded(child: _Title()),
           Expanded(child: _Image()),
         ],
@@ -86,7 +73,12 @@ class _Title extends StatelessWidget {
 }
 
 class _Menu extends StatelessWidget {
-  onMenuTap() {}
+  final VoidCallback onPressed;
+
+  _Menu({
+    Key key,
+    @required this.onPressed,
+  }) : super(key: key);
 
   Widget build(BuildContext context) {
     return Align(
@@ -100,7 +92,7 @@ class _Menu extends StatelessWidget {
             color: Styles.Colors.greyLight,
             size: 24,
           ),
-          onPress: onMenuTap,
+          onPressed: onPressed,
         ),
       ),
     );

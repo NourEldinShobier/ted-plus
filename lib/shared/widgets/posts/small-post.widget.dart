@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets.module.dart';
 import '../../styles/styles.module.dart' as Styles;
-import '../../utils/talk.util.dart';
+import '../../../utils/talk.util.dart';
 
 class SmallPost extends StatelessWidget {
   final Talk talk;
@@ -178,7 +178,7 @@ class _BookMark extends StatelessWidget {
       width: 40,
       height: 40,
       child: RippleLayout(
-        onPress: () {},
+        onPressed: () {},
         borderRadius: BorderRadius.circular(100),
         child: Icon(
           Icons.bookmark_border,
@@ -196,7 +196,7 @@ class _More extends StatelessWidget {
       width: 40,
       height: 40,
       child: RippleLayout(
-        onPress: () {},
+        onPressed: () {},
         borderRadius: BorderRadius.circular(100),
         child: Icon(
           Icons.more_vert,
