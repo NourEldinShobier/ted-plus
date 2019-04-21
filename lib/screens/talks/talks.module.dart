@@ -6,14 +6,17 @@ import '../../shared/widgets/widgets.module.dart';
 
 class TalksScreen extends StatelessWidget {
   final String title;
-
-  ScrollController scrollController = ScrollController();
+  final ScrollController scrollController = ScrollController();
 
   TalksScreen({@required this.title});
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TAppBar(title: this.title, key: ValueKey('talks.app-bar')),
+      appBar: TAppBar(
+        title: this.title,
+        key: ValueKey('talks.app-bar'),
+        scrollController: scrollController,
+      ),
       body: Container(
         color: Colors.white,
         child: ListView.separated(

@@ -1,36 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:ted_plus/shared/widgets/widgets.module.dart';
-import 'package:ted_plus/shared/styles/styles.module.dart' as Styles;
-import '../talks.module.dart';
+part of 'app-bar.widget.dart';
 
-class TAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final String title;
-
-  TAppBar({
-    Key key,
-    @required this.title,
-  }) : super(key: key);
-
-  @override
-  _TAppBarState createState() => _TAppBarState();
-  Size get preferredSize => Size.fromHeight(64);
-}
-
-class _TAppBarState extends State<TAppBar> {
-  TalksScreen talksScreen;
-  bool dropShadow = false;
-
-  initState() {
-    talksScreen = context.ancestorWidgetOfExactType(TalksScreen);
-    talksScreen.scrollController.addListener(() {
-      double offset = talksScreen.scrollController.offset;
-
-      if (offset == 0 && dropShadow) setState(() => dropShadow = false);
-      if (offset > 0 && !dropShadow) setState(() => dropShadow = true);
-    });
-    super.initState();
-  }
-
+class TAppBarView extends TAppBarState {
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
 

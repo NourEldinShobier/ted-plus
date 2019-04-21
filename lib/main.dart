@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:flutter/services.dart';
 import 'screens/home/home.module.dart';
 
@@ -10,13 +9,8 @@ import 'shared/widgets/widgets.module.dart';
 
 main(List<String> args) => runApp(App());
 
-class App extends StatefulWidget {
-  PageController pageController;
-  _AppState createState() => _AppState();
-}
-
-class _AppState extends State<App> {
-  List<NavIcon> navIcons = [
+class App extends StatelessWidget {
+  final List<NavIcon> navIcons = [
     NavIcon(
       color: Colors.white,
       icon: Icon(Styles.TEDIcons.talks, color: Styles.Colors.grey),
@@ -42,20 +36,7 @@ class _AppState extends State<App> {
       title: 'Account',
     ),
   ];
-
-  BehaviorSubject currentPage;
-
-  void initState() {
-    super.initState();
-    currentPage = BehaviorSubject.seeded(0);
-    widget.pageController = new PageController();
-  }
-
-  void dispose() {
-    super.dispose();
-    //widget.pageController.dispose();
-    //currentPage.close();
-  }
+  final PageController pageController = PageController(initialPage: 0);
 
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -70,19 +51,18 @@ class _AppState extends State<App> {
       theme: ThemeData(accentColor: Styles.Colors.greyLight),
       home: Scaffold(
         bottomNavigationBar: TNavBar(
+          pageController: pageController,
           navIcons: navIcons,
-          currentPage: currentPage,
         ),
         body: PageView.builder(
           itemBuilder: (_, index) {
             if (index == 0) return HomeScreen();
             if (index == 1) return DiscoverScreen();
-            if (index == 2) return HomeScreen();
+            if (index == 2) return DiscoverScreen();
             if (index == 3) return AccountScreen();
           },
-          physics: AlwaysScrollableScrollPhysics(),
-          onPageChanged: (page) => currentPage.add(page),
-          controller: widget.pageController,
+          physics: NeverScrollableScrollPhysics(),
+          controller: pageController,
           itemCount: 4,
         ),
       ),

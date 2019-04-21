@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
     'Discover trending talks',
   ];
 
-  ScrollController scrollController = ScrollController();
+  final ScrollController scrollController = ScrollController();
 
   Widget build(BuildContext context) {
     Widget divider = Container(
@@ -25,7 +25,10 @@ class HomeScreen extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: TAppBar(key: ValueKey('home.appbar')),
+      appBar: TAppBar(
+        key: ValueKey('home.appbar'),
+        scrollController: scrollController,
+      ),
       body: SizedBox.expand(
         key: ValueKey('home.body'),
         child: ListView.separated(
