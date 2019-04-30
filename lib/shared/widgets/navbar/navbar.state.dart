@@ -30,7 +30,7 @@ abstract class TNavBarState extends State<TNavBar>
     super.dispose();
   }
 
-  onTap(page) {
+  void onTap(page) {
     setState(() {
       navIconsViews[currnetPage].controller.reverse();
       currnetPage = page;

@@ -32,7 +32,7 @@ class ThumbnailsContainer extends StatelessWidget {
           style: TextStyle(
             color: Color(0xFF202124),
             fontFamily: 'GoogleMedium',
-            fontSize: 21,
+            fontSize: 18,
           ),
         ),
       ),
@@ -44,25 +44,25 @@ class ThumbnailsContainer extends StatelessWidget {
         subTitle,
         style: TextStyle(
           color: Styles.Colors.greyLight,
-          fontSize: 16,
+          fontSize: 14,
         ),
       ),
     );
 
     return Container(
-      height: 414,
+      height: 392,
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 27),
+          SizedBox(height: 23),
           titleElement,
           SizedBox(height: 4),
           subTitleElement,
-          SizedBox(height: 12),
+          SizedBox(height: 16),
           Expanded(
             child: _TalksList(this.talks, title),
-          )
+          ),
         ],
       ),
     );

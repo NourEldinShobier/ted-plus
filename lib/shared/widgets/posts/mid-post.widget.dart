@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../styles/styles.module.dart' as Styles;
 import '../../../utils/talk.util.dart';
+import '../widgets.module.dart';
 
 class MidPost extends StatelessWidget {
   final Talk talk;
@@ -19,10 +20,10 @@ class MidPost extends StatelessWidget {
           child: Align(
             alignment: Alignment.bottomRight,
             child: Padding(
-              padding: EdgeInsets.only(right: 0, bottom: 33),
+              padding: EdgeInsets.only(bottom: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[_More()],
+                children: <Widget>[_BookMark(), _More()],
               ),
             ),
           ),
@@ -59,7 +60,7 @@ class _Post extends StatelessWidget {
                 title: talk.title,
               ),
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 18),
             _TalkSubTitle(
               speakerName: talk.speakerName,
               date: talk.publishDate,
@@ -78,7 +79,7 @@ class _TalkImage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(11),
+      borderRadius: BorderRadius.circular(8),
       child: image,
     );
   }
@@ -145,7 +146,7 @@ class _TalkTitle extends StatelessWidget {
       style: TextStyle(
         color: Color(0xFF202124),
         fontFamily: 'GoogleMedium',
-        fontSize: 20,
+        fontSize: 18,
       ),
     );
   }
@@ -165,7 +166,25 @@ class _TalkSubTitle extends StatelessWidget {
       '$speakerName • $date',
       style: TextStyle(
         color: Styles.Colors.greyLight,
-        fontSize: 14,
+        fontSize: 12,
+      ),
+    );
+  }
+}
+
+class _BookMark extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 40,
+      height: 40,
+      child: RippleLayout(
+        onPressed: () {},
+        borderRadius: BorderRadius.circular(100),
+        child: Icon(
+          Icons.bookmark,
+          color: Styles.Colors.greyLight,
+          size: 21,
+        ),
       ),
     );
   }
@@ -174,20 +193,15 @@ class _TalkSubTitle extends StatelessWidget {
 class _More extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 31,
-      height: 31,
-      child: Material(
-        clipBehavior: Clip.antiAlias,
-        type: MaterialType.transparency,
-        child: IconButton(
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          onPressed: () {},
-          icon: Icon(
-            Icons.more_vert,
-            color: Styles.Colors.greyLight,
-            size: 21,
-          ),
+      width: 40,
+      height: 40,
+      child: RippleLayout(
+        onPressed: () {},
+        borderRadius: BorderRadius.circular(100),
+        child: Icon(
+          Icons.more_vert,
+          color: Styles.Colors.greyLight,
+          size: 21,
         ),
       ),
     );

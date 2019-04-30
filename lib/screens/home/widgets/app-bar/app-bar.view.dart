@@ -18,7 +18,7 @@ class TAppBarView extends TAppBarState {
       ),
       child: Row(
         children: <Widget>[
-          Expanded(child: _Menu(onPressed: onMenuPressed)),
+          Expanded(child: _Search(onPressed: onMenuPressed)),
           Expanded(child: _Title()),
           Expanded(child: _Image()),
         ],
@@ -40,7 +40,7 @@ class _Title extends StatelessWidget {
             style: TextStyle(
               color: Styles.Colors.red,
               fontFamily: 'GoogleBold',
-              fontSize: 22.0,
+              fontSize: 20,
             ),
           ),
           SizedBox(width: 5),
@@ -49,7 +49,7 @@ class _Title extends StatelessWidget {
             style: TextStyle(
               color: Styles.Colors.greyLight,
               fontFamily: 'GoogleMedium',
-              fontSize: 22.0,
+              fontSize: 20,
             ),
           )
         ],
@@ -58,10 +58,10 @@ class _Title extends StatelessWidget {
   }
 }
 
-class _Menu extends StatelessWidget {
+class _Search extends StatelessWidget {
   final VoidCallback onPressed;
 
-  _Menu({
+  _Search({
     Key key,
     @required this.onPressed,
   }) : super(key: key);
@@ -74,7 +74,7 @@ class _Menu extends StatelessWidget {
         child: RippleLayout(
           borderRadius: BorderRadius.circular(100),
           child: Icon(
-            Icons.menu,
+            Icons.search,
             color: Styles.Colors.greyLight,
             size: 24,
           ),
@@ -88,10 +88,10 @@ class _Menu extends StatelessWidget {
 class _Image extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 16),
+      padding: EdgeInsets.only(right: 24),
       child: SizedBox(
-        width: 32,
-        height: 32,
+        width: 28,
+        height: 28,
         child: Align(
           alignment: Alignment.centerRight,
           child: ClipOval(
