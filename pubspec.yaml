@@ -12,14 +12,20 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  provider: ^2.0.1+1
+  functional_widget_annotation: any
   flutter:
     sdk: flutter
-    
+
+  outline_material_icons: ^0.1.0
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
+  functional_widget: any
+  build_runner: any
   flutter_test:
     sdk: flutter
 
@@ -31,7 +37,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/img/profileImg.png
-    - assets/img/PostImg.jpg 
+    - assets/img/PostImg.jpg
     - assets/img/PostImg1.jpg
     - assets/img/PostImg2.jpg
   fonts:
@@ -44,6 +50,3 @@ flutter:
     - family: GoogleRegular
       fonts:
         - asset: assets/fonts/GoogleSans-Regular.ttf
-    - family: TEDIcons
-      fonts:       
-        - asset: assets/fonts/TEDIcons.ttf

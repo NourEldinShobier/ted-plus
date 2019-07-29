@@ -4,6 +4,7 @@ import 'utils/talk.util.dart';
 class FakeData {
   static List<Talk> talks = [
     Talk(
+      views: 200,
       title: 'Why you should treat the tech you use at work like a colleague',
       speakerName: 'Nadjia Yousif',
       publishDate: 'Dec 2018',
@@ -15,6 +16,7 @@ class FakeData {
       tags: ['Technology', 'Science'],
     ),
     Talk(
+      views: 120,
       title: 'Can you solve the prisoner hat riddle?',
       speakerName: 'Alex Gendler',
       publishDate: 'Feb 2019',
@@ -26,6 +28,7 @@ class FakeData {
       tags: ['Technology', 'Science'],
     ),
     Talk(
+      views: 20,
       title: 'What your breath could reveal about your health',
       speakerName: 'Julian Burschka',
       publishDate: 'Feb 2019',
@@ -37,6 +40,7 @@ class FakeData {
       tags: ['Technology', 'Science'],
     ),
     Talk(
+      views: 20,
       title: 'Why you should treat the tech you use at work like a colleague',
       speakerName: 'Nadjia Yousif',
       publishDate: 'Dec 2018',
@@ -48,6 +52,7 @@ class FakeData {
       tags: ['Technology', 'Science'],
     ),
     Talk(
+      views: 20,
       title: 'Can you solve the prisoner hat riddle?',
       speakerName: 'Alex Gendler',
       publishDate: 'Feb 2019',
@@ -59,6 +64,7 @@ class FakeData {
       tags: ['Technology', 'Science'],
     ),
     Talk(
+      views: 20,
       title: 'What your breath could reveal about your health',
       speakerName: 'Julian Burschka',
       publishDate: 'Feb 2019',

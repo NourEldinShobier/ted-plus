@@ -1,8 +1,36 @@
-part of 'app-bar.widget.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class TAppBarView extends TAppBarState {
+import 'package:ted_plus/shared/styles/styles.module.dart' as Styles;
+import 'package:ted_plus/shared/widgets/widgets.module.dart';
+
+import '../../home.controller.dart';
+import 'app-bar.controller.dart';
+
+class TAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final appBar = TAppBarController();
+
+  TAppBar({Key key}) : super(key: key);
+
+  get preferredSize => Size.fromHeight(64);
+
   Widget build(BuildContext context) {
-    double statusBarHeight = MediaQuery.of(context).padding.top;
+    var homePage = Provider.of<HomePageController>(context);
+
+    appBar.shadowController = homePage.scrollController;
+    appBar.init();
+
+    return ChangeNotifierProvider<TAppBarController>.value(
+      child: TAppBarBody(),
+      notifier: appBar,
+    );
+  }
+}
+
+class TAppBarBody extends StatelessWidget {
+  Widget build(BuildContext context) {
+    var appBar = Provider.of<TAppBarController>(context);
+    var statusBarHeight = MediaQuery.of(context).padding.top;
 
     return Container(
       padding: EdgeInsets.only(top: statusBarHeight),
@@ -10,7 +38,7 @@ class TAppBarView extends TAppBarState {
         color: Colors.white,
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, dropShadow ? 0.12 : 0.0),
+            color: Color.fromRGBO(0, 0, 0, appBar.dropShadow ? 0.12 : 0.0),
             offset: Offset(0, 0),
             blurRadius: 3,
           ),
@@ -18,7 +46,7 @@ class TAppBarView extends TAppBarState {
       ),
       child: Row(
         children: <Widget>[
-          Expanded(child: _Search(onPressed: onMenuPressed)),
+          Expanded(child: _Search()),
           Expanded(child: _Title()),
           Expanded(child: _Image()),
         ],
@@ -59,26 +87,23 @@ class _Title extends StatelessWidget {
 }
 
 class _Search extends StatelessWidget {
-  final VoidCallback onPressed;
-
-  _Search({
-    Key key,
-    @required this.onPressed,
-  }) : super(key: key);
-
   Widget build(BuildContext context) {
+    var appBar = Provider.of<TAppBarController>(context);
+
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: EdgeInsets.only(left: 8),
+        padding: EdgeInsets.only(left: 12),
         child: RippleLayout(
+          width: 40,
+          height: 40,
           borderRadius: BorderRadius.circular(100),
           child: Icon(
             Icons.search,
             color: Styles.Colors.greyLight,
             size: 24,
           ),
-          onPressed: onPressed,
+          onPressed: appBar.searchButton_onPressed,
         ),
       ),
     );

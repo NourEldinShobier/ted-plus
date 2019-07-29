@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Talk {
   final Image image;
 
+  //final String id;
   final String title;
 
   final String speakerName;
@@ -11,6 +12,7 @@ class Talk {
   final String duration;
 
   final List<String> tags;
+  final int views;
 
   Talk({
     this.title,
@@ -19,5 +21,6 @@ class Talk {
     this.duration,
     this.image,
     this.tags,
+    this.views,
   });
 }

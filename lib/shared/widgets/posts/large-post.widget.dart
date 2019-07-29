@@ -45,7 +45,7 @@ class _Post extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(height: 16),
+        SizedBox(height: 23),
         _TalkThumbnail(
           image: talk.image,
           duration: talk.duration,
@@ -97,7 +97,7 @@ class _TalkImage extends StatelessWidget {
       height: 176,
       width: double.infinity,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(11),
+        borderRadius: BorderRadius.circular(8),
         child: image,
       ),
     );

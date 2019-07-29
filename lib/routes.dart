@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/talks/talks.module.dart';
+import 'pages/talks/talks.module.dart';
 
 abstract class Router {
   static navigateToTalks(context, title) {

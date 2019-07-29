@@ -1,6 +1,6 @@
 part of 'app-bar.widget.dart';
 
-abstract class TAppBarState extends State<TAppBar> {
+abstract class TAppBarController extends State<TAppBar> {
   bool dropShadow = false;
 
   initState() {
@@ -10,8 +10,7 @@ abstract class TAppBarState extends State<TAppBar> {
       if (offset == 0 && dropShadow) setState(() => dropShadow = false);
       if (offset > 0 && !dropShadow) setState(() => dropShadow = true);
     });
+
     super.initState();
   }
-
-  onMenuPressed() {}
 }
